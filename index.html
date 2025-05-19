@@ -26,6 +26,78 @@
         .logo:hover {
             color: #ff85c1;
         }
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .form-submit {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .form-submit:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        .form-submit:active {
+            transform: translateY(0);
+        }
+        .form-input:invalid,
+        .form-textarea:invalid {
+            border-color: #ff6b6b;
+        }
+        .form-input:valid,
+        .form-textarea:valid {
+            border-color: #51cf66;
+        }
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+        .form-input:invalid + .error-message,
+        .form-textarea:invalid + .error-message {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -136,25 +208,25 @@
                 <div class="skill-category">
                     <h3>Программирование</h3>
                     <ul class="skill-list">
-                        <li>Python <span class="skill-level"></span></li>
-                        <li>JavaScript <span class="skill-level"></span></li>
-                        <li>HTML/CSS <span class="skill-level"></span></li>
+                        <li>Python <span class="skill-level" style=" "></span></li>
+                        <li>JavaScript <span class="skill-level" style=" "></span></li>
+                        <li>HTML/CSS <span class="skill-level" style=" "></span></li>
                     </ul>
                 </div>
                 <div class="skill-category">
                     <h3>Иностранные языки</h3>
                     <ul class="skill-list">
-                        <li>Английский (B2) <span class="skill-level"></span></li>
-                        <li>Немецкий (A1) <span class="skill-level"></span></li>
-                        <li>Китайский (начальный) <span class="skill-level"></span></li>
+                        <li>Английский (B2) <span class="skill-level" style=" "></span></li>
+                        <li>Немецкий (A1) <span class="skill-level" style=" "></span></li>
+                        <li>Китайский (начальный) <span class="skill-level" style=" "></span></li>
                     </ul>
                 </div>
                 <div class="skill-category">
                     <h3>Другие навыки</h3>
                     <ul class="skill-list">
-                        <li>Алгоритмы и структуры данных <span class="skill-level"></span></li>
-                        <li>Машинное обучение <span class="skill-level"></span></li>
-                        <li>Веб-разработка <span class="skill-level"></span></li>
+                        <li>Алгоритмы и структуры данных <span class="skill-level" style=" "></span></li>
+                        <li>Машинное обучение <span class="skill-level" style=" "></span></li>
+                        <li>Веб-разработка <span class="skill-level" style=" "></span></li>
                     </ul>
                 </div>
             </div>
@@ -179,7 +251,39 @@
                         </a>
                     </div>
                 </div>
+            </div>
 
+            <div class="contact-form">
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary-color);">Форма обратной связи</h3>
+                <form id="feedbackForm" novalidate>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Ваше имя:</label>
+                        <input type="text" id="name" class="form-input" required minlength="2" maxlength="50">
+                        <span class="error-message">Пожалуйста, введите ваше имя (от 2 до 50 символов)</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Ваш email:</label>
+                        <input type="email" id="email" class="form-input" required>
+                        <span class="error-message">Пожалуйста, введите корректный email</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Тема сообщения:</label>
+                        <input type="text" id="subject" class="form-input" required minlength="5" maxlength="100">
+                        <span class="error-message">Пожалуйста, введите тему сообщения (от 5 до 100 символов)</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">Ваше сообщение:</label>
+                        <textarea id="message" class="form-textarea" required minlength="10" maxlength="1000"></textarea>
+                        <span class="error-message">Пожалуйста, введите сообщение (от 10 до 1000 символов)</span>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button type="submit" class="form-submit">Отправить сообщение</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -210,6 +314,30 @@
     menuToggle.addEventListener('click', () => {
         nav.classList.toggle('active');
         menuToggle.classList.toggle('active');
+    });
+
+    const feedbackForm = document.getElementById('feedbackForm');
+
+    feedbackForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (this.checkValidity()) {
+            alert('Сообщение отправлено! Спасибо за ваше обращение.');
+            this.reset();
+        } else {
+            const invalidFields = this.querySelectorAll(':invalid');
+            invalidFields.forEach(field => {
+                field.nextElementSibling.style.display = 'block';
+            });
+        }
+    });
+
+    feedbackForm.querySelectorAll('input, textarea').forEach(field => {
+        field.addEventListener('input', () => {
+            if (field.validity.valid) {
+                field.nextElementSibling.style.display = 'none';
+            }
+        });
     });
 </script>
 </body>
