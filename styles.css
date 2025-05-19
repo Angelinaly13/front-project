@@ -523,7 +523,6 @@ body {
     .social-link {
         margin: 0 10px;
     }
-    /* Добавьте эти стили в конец файла, после существующих медиа-запросов */
 
     @media (max-width: 768px) {
         .hero-title {
