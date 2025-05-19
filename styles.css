@@ -591,7 +591,6 @@ body {
         }
     }
 
-    /* Улучшение для очень маленьких экранов */
     @media (max-width: 360px) {
         .hero-title {
             font-size: 1.6rem;
