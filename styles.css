@@ -9,6 +9,17 @@
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Добавлено для плавного скролла */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;

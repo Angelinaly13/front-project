@@ -141,7 +141,7 @@
         <div class="container">
             <h2 class="section-title">Обо мне</h2>
             <div class="about-content">
-                <p>Я - студентка первого курса Московского физико-технического института (МФТИ), Высшей школы прикладной информатики (ВШПИ).</p>
+                <p>Я - студентка первого курса Московского физико-технического института (МФТИ), Высшей школы программной инженерии (ВШПИ).</p>
                 <p>С детства увлекаюсь математикой и программированием, участвую в олимпиадах и научных проектах. Люблю решать сложные задачи и постоянно развиваюсь в области IT.</p>
                 <p>В свободное время занимаюсь музыкой и спортом, что помогает поддерживать баланс между учебой и отдыхом.</p>
             </div>
@@ -325,18 +325,33 @@
             alert('Сообщение отправлено! Спасибо за ваше обращение.');
             this.reset();
         } else {
-            const invalidFields = this.querySelectorAll(':invalid');
-            invalidFields.forEach(field => {
-                field.nextElementSibling.style.display = 'block';
-            });
+            showAllErrors();
         }
     });
 
+    function showAllErrors() {
+        const fields = feedbackForm.querySelectorAll('input, textarea');
+        fields.forEach(field => {
+            validateField(field);
+        });
+    }
+
+    function validateField(field) {
+        const errorMessage = field.nextElementSibling;
+        if (!field.validity.valid) {
+            errorMessage.style.display = 'block';
+        } else {
+            errorMessage.style.display = 'none';
+        }
+    }
+
     feedbackForm.querySelectorAll('input, textarea').forEach(field => {
         field.addEventListener('input', () => {
-            if (field.validity.valid) {
-                field.nextElementSibling.style.display = 'none';
-            }
+            validateField(field);
+        });
+
+        field.addEventListener('blur', () => {
+            validateField(field);
         });
     });
 </script>
